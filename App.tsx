@@ -1,19 +1,41 @@
+
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
+import AppLoading from 'expo-app-loading'
+import { ThemeProvider } from 'styled-components';
+import { NavigationContainer } from '@react-navigation/native'
+
+
+import { AppRoutes } from "./src/routes/app.routes";
+
+import { 
+  useFonts,
+  Poppins_400Regular,
+  Poppins_500Medium,
+  Poppins_700Bold
+ } from '@expo-google-fonts/poppins'
+
+
+import theme from './src/global/styles/theme'
 
 export default function App() {
-  return (
-    <View style={styles.container}>
-      <Text>Open up App.tsx to start working on your app!</Text>
-    </View>
-  );
-}
 
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+  const [fontsLoader] = useFonts({
+    Poppins_400Regular,
+    Poppins_500Medium,
+    Poppins_700Bold
+  })
+
+  if(!fontsLoader){
+    return <AppLoading />
+  }
+
+  return (
+    <ThemeProvider theme={theme}>
+      <NavigationContainer>
+        <AppRoutes />
+      </NavigationContainer>
+    </ThemeProvider>
+  )
+  
+  
+}
