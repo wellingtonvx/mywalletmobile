@@ -40,7 +40,7 @@ export function AppRoutes(){
             />
           ))
         }}
-      />
+      />  
 
       <Screen 
         name="Cadasrar"
