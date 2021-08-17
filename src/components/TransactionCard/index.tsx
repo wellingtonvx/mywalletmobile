@@ -13,10 +13,12 @@ import  {
 
 } from './styles'
 
-
+ interface Category {
+   name:string
+   icon: string
+ }
 
 export interface TransactionCardProps {
-  id:string
   type: 'positive' | 'negative'
   name: string;
   amount: string;
@@ -34,7 +36,7 @@ export function TransactionCard({data}:DataProps) {
     item =>  item.key === data.category)[0];
 
   return (
-    <Container>s
+    <Container>
       <Title>{data.name}</Title>
 
       <Amount type={data.type}>
